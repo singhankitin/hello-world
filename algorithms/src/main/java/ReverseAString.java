@@ -1,7 +1,7 @@
 public class ReverseAString {
 
     public String reverseAString(String input) {
-        String retVal = null;
+        String retVal;
         // Simplest
         retVal = reverseByIteratingArray(input); // O(N)
         return retVal;
