@@ -68,4 +68,56 @@ public class SinglyLinkedListTest {
         Assertions.assertEquals("x", singlyLinkedList.get(1));
         Assertions.assertEquals(1, singlyLinkedList.getLength());
     }
+
+    @Test
+    public void testReverse() {
+        singlyLinkedList.add("a"); // a
+        Assertions.assertEquals("a", singlyLinkedList.get(1));
+        Assertions.assertEquals(1, singlyLinkedList.getLength());
+
+        singlyLinkedList.reverse(); // a
+        Assertions.assertEquals("a", singlyLinkedList.get(1));
+        Assertions.assertEquals(1, singlyLinkedList.getLength());
+
+        singlyLinkedList.add("b"); // a b
+        Assertions.assertEquals("a", singlyLinkedList.get(1));
+        Assertions.assertEquals("b", singlyLinkedList.get(2));
+        Assertions.assertEquals(2, singlyLinkedList.getLength());
+        singlyLinkedList.reverse(); // b a
+        Assertions.assertEquals("b", singlyLinkedList.get(1));
+        Assertions.assertEquals("a", singlyLinkedList.get(2));
+        Assertions.assertEquals(2, singlyLinkedList.getLength());
+        singlyLinkedList.reverse(); // a b
+        Assertions.assertEquals("a", singlyLinkedList.get(1));
+        Assertions.assertEquals("b", singlyLinkedList.get(2));
+        Assertions.assertEquals(2, singlyLinkedList.getLength());
+        singlyLinkedList.add("c"); // a b c
+        Assertions.assertEquals("a", singlyLinkedList.get(1));
+        Assertions.assertEquals("b", singlyLinkedList.get(2));
+        Assertions.assertEquals("c", singlyLinkedList.get(3));
+        Assertions.assertEquals(3, singlyLinkedList.getLength());
+        singlyLinkedList.reverse(); // c b a
+        Assertions.assertEquals("c", singlyLinkedList.get(1));
+        Assertions.assertEquals("b", singlyLinkedList.get(2));
+        Assertions.assertEquals("a", singlyLinkedList.get(3));
+        Assertions.assertEquals(3, singlyLinkedList.getLength());
+        singlyLinkedList.reverse(); // a b c
+        Assertions.assertEquals("a", singlyLinkedList.get(1));
+        Assertions.assertEquals("b", singlyLinkedList.get(2));
+        Assertions.assertEquals("c", singlyLinkedList.get(3));
+        Assertions.assertEquals(3, singlyLinkedList.getLength());
+        singlyLinkedList.add("d"); // a b c d
+        Assertions.assertEquals("a", singlyLinkedList.get(1));
+        Assertions.assertEquals("b", singlyLinkedList.get(2));
+        Assertions.assertEquals("c", singlyLinkedList.get(3));
+        Assertions.assertEquals("d", singlyLinkedList.get(4));
+        Assertions.assertEquals(4, singlyLinkedList.getLength());
+        singlyLinkedList.reverse(); // d c b a
+        Assertions.assertEquals("d", singlyLinkedList.get(1));
+        Assertions.assertEquals("c", singlyLinkedList.get(2));
+        Assertions.assertEquals("b", singlyLinkedList.get(3));
+        Assertions.assertEquals("a", singlyLinkedList.get(4));
+        Assertions.assertEquals(4, singlyLinkedList.getLength());
+        System.out.println(singlyLinkedList);
+    }
 }

@@ -3,16 +3,39 @@ public class SinglyLinkedList {
     private Node tail;
     private int length = 0;
 
+    public void reverse() {
+        if (length > 1) {
+            Node leader = head;
+            Node follower = head.getNext();
+            while (leader != null) {
+                Node followersFollower = null;
+                if (null != follower) { // when we reach the original head
+                    followersFollower = follower.getNext();
+                    follower.setNext(leader);
+                }
+                leader = follower;
+                follower = followersFollower;
+            }
+            Node headTempCopy = head;
+            head = tail;
+            tail = headTempCopy;
+            tail.setNext(null);
+        }
+    }
+
     // add an element to the end of the list
-    public void add(String value) {
+    public SinglyLinkedList add(String value) {
         Node node = new Node(value, null);
         if (length == 0) {
+            // empty
             head = node;
         } else {
+            // not empty
             tail.setNext(node);
         }
         tail = node;
         length++;
+        return this;
     }
 
     // remove element at provided index
@@ -67,6 +90,7 @@ public class SinglyLinkedList {
                 if (i == index) {
                     Node newNode = new Node(value, node.getNext());
                     node.setNext(newNode);
+                    // end
                     if (i == length) {
                         tail = newNode;
                     }
@@ -124,20 +148,20 @@ class Node {
         this.next = next;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
     public String getValue() {
         return value;
     }
 
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public Node getNext() {
         return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 
     @Override

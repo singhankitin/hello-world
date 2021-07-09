@@ -12,8 +12,8 @@ public class FindPairWithSum {
         // - using set of complement values
         retVal = usingASetOfComplementValues(array, sum);
 
-        // - traversing the array in from both directions at the same time
-        // -
+        // - traversing the array from both directions at the same time
+        // -TODO
         return retVal;
     }
 
