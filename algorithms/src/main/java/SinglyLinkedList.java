@@ -3,7 +3,7 @@ public class SinglyLinkedList {
     private Node tail;
     private int length = 0;
 
-    public void reverse() {
+    public void reverseOriginal() {
         if (length > 1) {
             Node leader = head;
             Node follower = head.getNext();
@@ -13,6 +13,23 @@ public class SinglyLinkedList {
                     followersFollower = follower.getNext();
                     follower.setNext(leader);
                 }
+                leader = follower;
+                follower = followersFollower;
+            }
+            Node headTempCopy = head;
+            head = tail;
+            tail = headTempCopy;
+            tail.setNext(null);
+        }
+    }
+
+    public void reverseSimplified() {
+        if (length > 1) {
+            Node leader = head;
+            Node follower = head.getNext();
+            while (follower != null) {
+                Node followersFollower = follower.getNext();
+                follower.setNext(leader);
                 leader = follower;
                 follower = followersFollower;
             }
