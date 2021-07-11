@@ -43,8 +43,8 @@ public class BinarySearchTree {
             return null;
         } else {
             Node currentNode = root;
-            while (true) {
-                if (value == currentNode.getValue()) {
+            while (currentNode != null) {
+                if (value.equals(currentNode.getValue())) {
                     return value;
                 } else {
                     if (value > currentNode.getValue()) {
@@ -54,6 +54,7 @@ public class BinarySearchTree {
                     }
                 }
             }
+            return null;
         }
     }
 

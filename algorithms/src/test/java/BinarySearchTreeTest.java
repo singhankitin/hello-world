@@ -53,5 +53,7 @@ public class BinarySearchTreeTest {
         Assertions.assertEquals(100, target.lookup(100));
         Assertions.assertEquals(109, target.lookup(109));
         Assertions.assertEquals(110, target.lookup(110));
+
+        Assertions.assertEquals(null, target.lookup(999));
     }
 }
