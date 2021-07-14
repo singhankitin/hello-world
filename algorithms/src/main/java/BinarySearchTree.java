@@ -39,9 +39,7 @@ public class BinarySearchTree {
     }
 
     public Integer lookup(final Integer value) {
-        if (root == null) {
-            return null;
-        } else {
+        if (root != null) {
             Node currentNode = root;
             while (currentNode != null) {
                 if (value.equals(currentNode.getValue())) {
@@ -54,8 +52,12 @@ public class BinarySearchTree {
                     }
                 }
             }
-            return null;
         }
+        return null;
+    }
+
+    public void remove(Integer value) {
+        // TODO
     }
 
     public Integer[] traverse() {
