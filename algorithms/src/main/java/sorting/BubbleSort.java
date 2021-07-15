@@ -9,7 +9,7 @@ public class BubbleSort {
         if (input != null && input.length > 1) {
             sortedArray = Arrays.copyOf(input, input.length);
             int end = input.length;
-            while (true) { // keep iterating we are swapping elements
+            while (true) { // keep iterating till we are swapping elements
                 boolean elementSwapped = false;
                 for (int i = 0; i < end - 1; i++) {
                     if (sortedArray[i] > sortedArray[i + 1]) {
