@@ -6,22 +6,20 @@ public class SelectionSort {
 
     public int[] sort(int[] input) {
         if (null != input && input.length > 1) {
-            int[] sortedArray = Arrays.copyOf(input, input.length);
-            int start = 0;
-            for (int i = start; i < sortedArray.length; i++) {
-                int smallestIndex = start;
-                int temp = sortedArray[i];
-                for (int j = start + 1; j < sortedArray.length; j++) {
-                    if (sortedArray[j] < sortedArray[smallestIndex]) {
-                        smallestIndex = j;
+            int[] arrayCopy = Arrays.copyOf(input, input.length);
+            for (int i = 0; i < arrayCopy.length; i++) {
+                int minElementIndex = i;
+                for (int j = i + 1; j < arrayCopy.length; j++) {
+                    if (arrayCopy[j] < arrayCopy[minElementIndex]) {
+                        minElementIndex = j;
                     }
                 }
-                sortedArray[i] = sortedArray[smallestIndex];
-                sortedArray[smallestIndex] = temp;
-                start++;
+                int temp = arrayCopy[i];
+                arrayCopy[i] = arrayCopy[minElementIndex];
+                arrayCopy[minElementIndex] = temp;
             }
-            System.out.printf("\n[%s]", Arrays.toString(sortedArray));
-            return sortedArray;
+            System.out.printf("\n[%s]", Arrays.toString(arrayCopy));
+            return arrayCopy;
         } else {
             return input;
         }
