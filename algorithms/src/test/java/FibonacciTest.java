@@ -35,5 +35,20 @@ public class FibonacciTest {
         Assertions.assertEquals(55, target.recursive(11));
         Assertions.assertThrows(IllegalArgumentException.class, () -> target.recursive(0));
         Assertions.assertThrows(IllegalArgumentException.class, () -> target.recursive(-1));
+
+        //  0   1   1   2   3   5   8   13  21  34  55
+        Assertions.assertEquals(0, target.list(1));
+        Assertions.assertEquals(1, target.list(2));
+        Assertions.assertEquals(1, target.list(3));
+        Assertions.assertEquals(2, target.list(4));
+        Assertions.assertEquals(3, target.list(5));
+        Assertions.assertEquals(5, target.list(6));
+        Assertions.assertEquals(8, target.list(7));
+        Assertions.assertEquals(13, target.list(8));
+        Assertions.assertEquals(21, target.list(9));
+        Assertions.assertEquals(34, target.list(10));
+        Assertions.assertEquals(55, target.list(11));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> target.list(0));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> target.list(-1));
     }
 }
