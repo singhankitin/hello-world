@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class BubbleSort {
 
-    int[] bubbleSort(int[] input) {
+    int[] sort(int[] input) {
         int[] sortedArray = input;
         if (input != null && input.length > 1) {
             sortedArray = Arrays.copyOf(input, input.length);
