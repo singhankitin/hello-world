@@ -42,17 +42,17 @@ public class Fibonacci {
     //  0   1   1   2   3   5   8   13  21  34  55
     public int list(int n) {
         if (n > 0) {
-            final List<Integer> linkedList = new ArrayList<>();
-            linkedList.add(0);
-            linkedList.add(1);
+            final List<Integer> list = new ArrayList<>();
+            list.add(0);
+            list.add(1);
             if (n < 3) {
-                return linkedList.get(n - 1);
+                return list.get(n - 1);
             } else {
                 for (int i = 2; i < n; i++) {
-                    linkedList.add(linkedList.get(i - 1) + linkedList.get(i - 2));
+                    list.add(list.get(i - 1) + list.get(i - 2));
                 }
-                System.out.printf("\nlinkedList:[%s]", linkedList);
-                return linkedList.get(linkedList.size() - 1);
+                System.out.printf("\nlist:[%s]", list);
+                return list.get(list.size() - 1);
             }
         } else {
             throw new IllegalArgumentException();
