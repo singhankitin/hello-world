@@ -55,5 +55,8 @@ public class BinarySearchTreeTest {
         Assertions.assertEquals(110, target.lookup(110));
 
         Assertions.assertEquals(null, target.lookup(999));
+
+        Assertions.assertArrayEquals(new Integer[]{100, 95, 110, 94, 96, 109, 111}, target.breadFirstSearch());
     }
+
 }

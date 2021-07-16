@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class BinarySearchTree {
 
     private Node root;
@@ -54,6 +59,23 @@ public class BinarySearchTree {
             }
         }
         return null;
+    }
+
+    public Integer[] breadFirstSearch() {
+        List<Integer> retVal = new ArrayList<>(length);
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (queue.peek() != null) {
+            Node headOfQueue = queue.poll();
+            retVal.add(headOfQueue.value);
+            if (headOfQueue.left != null) {
+                queue.offer(headOfQueue.left);
+            }
+            if (headOfQueue.right != null) {
+                queue.offer(headOfQueue.right);
+            }
+        }
+        return retVal.toArray(Integer[]::new);
     }
 
     public void remove(Integer value) {
