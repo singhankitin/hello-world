@@ -6,8 +6,8 @@ import java.util.function.Function;
 public class Memoizer {
 
     Function<Long, Long> factorial() {
-        ConcurrentHashMap<Long, Long> cache = new ConcurrentHashMap<>();
         return new Function<Long, Long>() {
+            private final ConcurrentHashMap<Long, Long> cache = new ConcurrentHashMap<>();
             @Override
             public Long apply(Long value) {
                 System.out.printf("\n[%s]", cache);
