@@ -1,6 +1,11 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class BinarySearchTreeTest {
 
     private BinarySearchTree target = new BinarySearchTree();
@@ -56,7 +61,15 @@ public class BinarySearchTreeTest {
 
         Assertions.assertEquals(null, target.lookup(999));
 
-        Assertions.assertArrayEquals(new Integer[]{100, 95, 110, 94, 96, 109, 111}, target.breadFirstSearch());
+        // BFS using queue
+        Assertions.assertArrayEquals(new Integer[]{100, 95, 110, 94, 96, 109, 111}, target.bfs());
+
+        // BFS using recursion
+        Queue<BinarySearchTree.Node> queue = new LinkedList<>();
+        queue.offer(target.getRoot());
+        List<Integer> retVal = new ArrayList<>(target.getLength());
+        target.bfsRecursive(queue, retVal);
+        Assertions.assertArrayEquals(new Integer[]{100, 95, 110, 94, 96, 109, 111}, retVal.toArray(Integer[]::new));
     }
 
 }

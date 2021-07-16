@@ -61,7 +61,7 @@ public class BinarySearchTree {
         return null;
     }
 
-    public Integer[] breadFirstSearch() {
+    public Integer[] bfs() {
         List<Integer> retVal = new ArrayList<>(length);
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
@@ -78,6 +78,21 @@ public class BinarySearchTree {
         return retVal.toArray(Integer[]::new);
     }
 
+    public void bfsRecursive(Queue<Node> queue, List<Integer> retVal) {
+        if (queue.peek() == null) {
+            return;
+        }
+        Node node = queue.poll();
+        retVal.add(node.value);
+        if (node.getLeft() != null) {
+            queue.offer(node.getLeft());
+        }
+        if (node.getRight() != null) {
+            queue.offer(node.getRight());
+        }
+        bfsRecursive(queue, retVal);
+    }
+
     public void remove(Integer value) {
         // TODO
     }
@@ -90,7 +105,11 @@ public class BinarySearchTree {
         return length;
     }
 
-    private class Node {
+    public Node getRoot() {
+        return root;
+    }
+
+    class Node {
         Integer value;
         Node left;
         Node right;
