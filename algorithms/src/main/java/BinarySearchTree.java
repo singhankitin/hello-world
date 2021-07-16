@@ -61,7 +61,7 @@ public class BinarySearchTree {
         return null;
     }
 
-    public Integer[] bfs() {
+    public Integer[] BFS() {
         List<Integer> retVal = new ArrayList<>(length);
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
@@ -78,7 +78,7 @@ public class BinarySearchTree {
         return retVal.toArray(Integer[]::new);
     }
 
-    public void bfsRecursive(Queue<Node> queue, List<Integer> retVal) {
+    public void BFSRecursive(Queue<Node> queue, List<Integer> retVal) {
         if (queue.peek() == null) {
             return;
         }
@@ -90,7 +90,37 @@ public class BinarySearchTree {
         if (node.getRight() != null) {
             queue.offer(node.getRight());
         }
-        bfsRecursive(queue, retVal);
+        BFSRecursive(queue, retVal);
+    }
+
+    public void DFSInOrder(Node node, Queue<Integer> retVal) {
+        if (node.getLeft() != null) {
+            DFSInOrder(node.getLeft(), retVal);
+        }
+        retVal.offer(node.getValue());
+        if (node.getRight() != null) {
+            DFSInOrder(node.getRight(), retVal);
+        }
+    }
+
+    public void DFSPreOrder(Node node, Queue<Integer> retVal) {
+        retVal.offer(node.getValue());
+        if (node.getLeft() != null) {
+            DFSPreOrder(node.getLeft(), retVal);
+        }
+        if (node.getRight() != null) {
+            DFSPreOrder(node.getRight(), retVal);
+        }
+    }
+
+    public void DFSPostOrder(Node node, Queue<Integer> retVal) {
+        if (node.getLeft() != null) {
+            DFSPostOrder(node.getLeft(), retVal);
+        }
+        if (node.getRight() != null) {
+            DFSPostOrder(node.getRight(), retVal);
+        }
+        retVal.offer(node.getValue());
     }
 
     public void remove(Integer value) {

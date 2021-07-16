@@ -61,15 +61,39 @@ public class BinarySearchTreeTest {
 
         Assertions.assertEquals(null, target.lookup(999));
 
+        //          100
+        //     95           110
+        //  94     96   109      111
+
         // BFS using queue
-        Assertions.assertArrayEquals(new Integer[]{100, 95, 110, 94, 96, 109, 111}, target.bfs());
+        Assertions.assertArrayEquals(new Integer[]{100, 95, 110, 94, 96, 109, 111}, target.BFS());
 
         // BFS using recursion
-        Queue<BinarySearchTree.Node> queue = new LinkedList<>();
-        queue.offer(target.getRoot());
         List<Integer> retVal = new ArrayList<>(target.getLength());
-        target.bfsRecursive(queue, retVal);
+        target.BFSRecursive(new LinkedList<>(List.of(target.getRoot())), retVal);
         Assertions.assertArrayEquals(new Integer[]{100, 95, 110, 94, 96, 109, 111}, retVal.toArray(Integer[]::new));
+
+        //          100
+        //     95           110
+        //  94     96   109      111
+
+        // DFS - In-Order: Left - Root - Right
+        Queue<Integer> dfsInOrder = new LinkedList<>();
+        target.DFSInOrder(target.getRoot(), dfsInOrder);
+        System.out.printf("\n[%s]", dfsInOrder);
+        Assertions.assertArrayEquals(new Integer[]{94, 95, 96, 100, 109, 110, 111}, dfsInOrder.toArray(Integer[]::new));
+
+        // DFS - Pre-Order: Root - Left - Right
+        Queue<Integer> dfsPreOrder = new LinkedList<>();
+        target.DFSPreOrder(target.getRoot(), dfsPreOrder);
+        System.out.printf("\n[%s]", dfsPreOrder);
+        Assertions.assertArrayEquals(new Integer[]{100, 95, 94, 96, 110, 109, 111}, dfsPreOrder.toArray(Integer[]::new));
+
+        // DFS - Post-Order: Left - Right - Root
+        Queue<Integer> dfsPostOrder = new LinkedList<>();
+        target.DFSPostOrder(target.getRoot(), dfsPostOrder);
+        System.out.printf("\n[%s]", dfsPreOrder);
+        Assertions.assertArrayEquals(new Integer[]{94, 96, 95, 109, 111, 110, 100}, dfsPostOrder.toArray(Integer[]::new));
     }
 
 }
